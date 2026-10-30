@@ -1,0 +1,30 @@
+[project]
+name = "halloween-switch"
+version = "0.1.0"
+description = "Group photo → before/flash/after Halloween reveal video (FLUX 3 Klein + LTX 2.5 via ComfyUI)"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE", "THIRD_PARTY_NOTICES.md"]
+authors = [{ name = "Yann Lamidon" }]
+requires-python = ">=3.11"
+# Requires the ffmpeg binary on PATH (not a Python package), and a ComfyUI server: local or Comfy Cloud.
+dependencies = [
+    "gradio>=6.31,<7",
+    "httpx>=0.28,<1",
+    "opencv-python-headless>=4.10,<5",
+    "pillow>=12",
+]
+
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+# App, not a library: install from the clone with `pip install -e .`, since pipeline/ reads ../workflows/*.json.
+[tool.setuptools]
+packages = ["pipeline"]
+py-modules = ["app"]
+package-data = { pipeline = ["models/*"] }
+
+[tool.ruff]
+line-length = 130
+target-version = "py311"

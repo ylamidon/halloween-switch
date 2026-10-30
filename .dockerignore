@@ -1,0 +1,8 @@
+*
+!app.py
+!LICENSE
+!THIRD_PARTY_NOTICES.md
+!pipeline/
+!workflows/
+!space/requirements.txt
+**/__pycache__

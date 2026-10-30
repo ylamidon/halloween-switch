@@ -1,0 +1,43 @@
+# Scratch / generated outputs
+.tmp/
+uploads/
+outputs/
+output/
+input/
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Models (never in the repo, see README)
+*.safetensors
+*.ckpt
+*.pt
+*.pth
+*.gguf
+models/
+!pipeline/models/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+build/
+dist/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Gradio
+.gradio/
+flagged/
+
+# Local tools
+.claude/settings.local.json
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
