@@ -4,7 +4,7 @@ Upload a group photo, pick a costume, get a short **before → flash → after**
 
 ![Original photo and the three costumes](examples/presets.jpg)
 
-https://github.com/user-attachments/assets/487a70aa-0e95-4bf2-89b8-23fb39e423ba
+https://github.com/user-attachments/assets/85280594-0391-475b-8bd1-ef7a9fc2f980
 
 Videos: [Vampire gala](examples/reveal_vampire.mp4) · [Witches](examples/reveal_witch.mp4) · [Skeleton face paint](examples/reveal_skeleton.mp4). All the people shown are AI-generated, see [examples/](examples/).
 
