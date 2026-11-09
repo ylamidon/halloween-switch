@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Halloween Switch: animated Halloween costume reveal with ComfyUI</title>
+<meta name="description" content="Halloween Switch turns a group photo into an animated Halloween costume reveal. Open-source ComfyUI pipeline with FLUX 3 Klein and LTX 2.5, open weights only, local or Comfy Cloud.">
+<link rel="canonical" href="https://ylamidon.github.io/halloween-switch/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Halloween Switch">
+<meta property="og:description" content="Turn a group photo into an animated Halloween reveal. Open-source ComfyUI pipeline with FLUX 3 Klein and LTX 2.5.">
+<meta property="og:url" content="https://ylamidon.github.io/halloween-switch/">
+<meta property="og:image" content="https://ylamidon.github.io/halloween-switch/thumbnail.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareSourceCode","name":"Halloween Switch","description":"Open-source ComfyUI pipeline that turns a group photo into an animated Halloween costume reveal, using FLUX 3 Image Klein and LTX 2.5.","codeRepository":"https://github.com/ylamidon/halloween-switch","programmingLanguage":"Python","author":{"@type":"Person","name":"Yann Lamidon"},"image":"https://ylamidon.github.io/halloween-switch/thumbnail.jpg","video":{"@type":"VideoObject","name":"Halloween Switch demo","description":"Demo of Halloween Switch: a group photo turned into an animated Halloween costume reveal.","thumbnailUrl":"https://ylamidon.github.io/halloween-switch/thumbnail.jpg","embedUrl":"https://www.youtube.com/embed/8j9phh7NpRg","uploadDate":"2026-10-28"}}
+</script>
+<style>
+:root{--bg:#fff;--fg:#1f2328;--muted:#59636e;--accent:#d35400;--card:#f6f8fa;--border:#d1d9e0}
+@media (prefers-color-scheme:dark){:root{--bg:#0d1117;--fg:#e6edf3;--muted:#9198a1;--accent:#ff8c3a;--card:#151b23;--border:#3d444d}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:860px;margin:0 auto;padding:40px 16px 64px}
+h1{font-size:2.4rem;margin:0 0 .3em}
+h2{margin-top:2em;border-bottom:1px solid var(--border);padding-bottom:.2em}
+p.lead{font-size:1.15rem;color:var(--muted);margin-top:0}
+a{color:var(--accent)}
+.btns{display:flex;flex-wrap:wrap;gap:12px;margin:24px 0}
+.btn{display:inline-block;padding:10px 18px;border-radius:8px;border:1px solid var(--border);background:var(--card);color:var(--fg);text-decoration:none;font-weight:600}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.video{position:relative;aspect-ratio:16/9;border-radius:10px;overflow:hidden;background:#000}
+.video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+img{max-width:100%;height:auto;border-radius:10px;display:block}
+ol li,ul li{margin:.4em 0}
+.table{overflow-x:auto}
+table{border-collapse:collapse;width:100%}
+th,td{border:1px solid var(--border);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--card)}
+footer{margin-top:48px;color:var(--muted);font-size:.9rem}
+</style>
+</head>
+<body>
+<main>
+<h1>🎃 Halloween Switch</h1>
+<p class="lead">Upload a group photo, pick a costume, get a short <strong>before → flash → after</strong> video: the original photo, a white flash with a whoosh, then the same people in Halloween costumes, animated. An open-source <strong>ComfyUI</strong> pipeline built on <strong>FLUX 3 Image Klein</strong> and <strong>LTX 2.5</strong>, open weights only.</p>
+<div class="btns">
+<a class="btn primary" href="https://github.com/ylamidon/halloween-switch">View on GitHub</a>
+<a class="btn" href="https://youtu.be/8j9phh7NpRg">Watch the demo on YouTube</a>
+</div>
+<div class="video"><iframe src="https://www.youtube-nocookie.com/embed/8j9phh7NpRg" title="Halloween Switch demo" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+
+<h2>How it works</h2>
+<ol>
+<li><strong>Costume edit</strong>: FLUX 3 Image Klein restyles the photo while keeping every person's face, skin tone, expression and pose. A YuNet face count picks a solo or group prompt.</li>
+<li><strong>Animation</strong>: LTX 2.5 animates the edited image (image-to-video, 5 s at 24 fps) with a static camera; only the setting moves: candle flames, fog, leaves.</li>
+<li><strong>Reveal</strong>: FFmpeg assembles the original photo, a white flash with a synthesized whoosh, then the animated clip. If the animation fails, a slow zoom on the still image keeps the result a video.</li>
+</ol>
+<p>It runs on a local ComfyUI or on <a href="https://cloud.comfy.org">Comfy Cloud</a>, through the same HTTP API client.</p>
+
+<h2>Costume presets</h2>
+<img src="presets.jpg" alt="Original group photo and the three Halloween costume presets: vampire gala, witches, skeleton face paint" width="1928" height="1288" loading="lazy">
+<div class="table"><table>
+<tr><th>Preset</th><th>Look</th><th>Motion</th></tr>
+<tr><td>Vampire gala</td><td>Victorian capes, red irises, subtle fangs, candlelit gothic hall</td><td>candle flames, fog, capes in a draft</td></tr>
+<tr><td>Witches</td><td>pointed hats, velvet cloaks, moon jewelry, jack-o'-lanterns at dusk</td><td>pumpkin light, purple mist</td></tr>
+<tr><td>Skeleton face paint</td><td>Day of the Dead face paint that follows each face, orange dusk</td><td>flickering light, drifting leaves</td></tr>
+</table></div>
+<p>All the people shown are AI-generated.</p>
+
+<h2>Privacy</h2>
+<p>EXIF metadata (GPS, camera) is stripped before upload; uploads and results are deleted from the app after 30 minutes.</p>
+
+<h2>Get started</h2>
+<p>Install instructions, model downloads and licenses are in the <a href="https://github.com/ylamidon/halloween-switch#readme">README on GitHub</a>.</p>
+
+<footer>Halloween Switch · <a href="https://github.com/ylamidon/halloween-switch">github.com/ylamidon/halloween-switch</a> · by Yann Lamidon</footer>
+</main>
+</body>
+</html>
